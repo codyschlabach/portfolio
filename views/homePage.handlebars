@@ -1,0 +1,69 @@
+<body>
+
+  <header>
+    <!-- The <i> tag below includes the bullhorn icon from Font Awesome -->
+    <a href="#"><h1 class="site-title"><i class="fa fa-hand-lizard-o"></i> kevin murphy</h1></a>
+
+    <nav class="navbar">
+      <ul class="navlist">
+        <li class="navitem navlink active"><a href="#">Home</a></li>
+        <li class="navitem navlink"><a href="#">About</a></li>
+        <li class="navitem navlink"><a href="#">Contact</a></li>
+        <li class="navitem navbar-search">
+          <input type="text" id="navbar-search-input" placeholder="Search...">
+          <button type="button" id="navbar-search-button"><i class="fa fa-search"></i></button>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="box-container">
+
+    <article class="box">
+      <div class="box-icon">
+        <i class="fa fa-bullhorn"></i>
+      </div>
+      <div class="box-content">
+        <p class="box-text">
+        Text Content
+        </p>
+        <p class="box-attribution">
+          <a href="#">Author</a>
+        </p>
+      </div>
+    </article>
+
+
+  </main>
+
+  <button type="button" id="create-box-button"><i class="fa fa-bullhorn"></i></button>
+
+  <div id="modal-backdrop" class="hidden"></div>
+  <div id="create-box-modal" class="hidden">
+    <div class="modal-dialog">
+
+      <div class="modal-header">
+        <h3>Create a box</h3>
+        <button type="button" class="modal-close-button">&times;</button>
+      </div>
+
+      <div class="modal-body">
+        <div class="box-input-element">
+          <label for="box-text-input">Text</label>
+          <textarea id="box-text-input"></textarea>
+        </div>
+        <div class="box-input-element">
+          <label for="box-attribution-input">Author</label>
+          <input type="text" id="box-attribution-input">
+        </div>
+      </div>
+
+      <div class="modal-footer">
+        <button type="button" class="modal-cancel-button">Cancel</button>
+        <button type="button" class="modal-accept-button">Create box</button>
+      </div>
+
+    </div>
+  </div>
+
+</body>
