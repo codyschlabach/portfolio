@@ -1,2 +1,2 @@
 # codyandkevin
-website for cody and kevin
+Website for Kevin
