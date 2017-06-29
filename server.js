@@ -5,6 +5,7 @@
  var fs = require('fs');
  var express = require('express');
  var exphbs = require('express-handlebars');
+ var projectData = require('./projectData');
 
  var app = express();
  var port = process.env.PORT || 3000;
@@ -14,25 +15,43 @@
 
  app.get('/', function (req, res, next) {
 
-   res.render('homePage');
+   var templateArgs = {
+     active_home: "active"
+   }
+
+   res.render('homePage',templateArgs);
  });
 
-//  app.get('/moods/:mood', function (req, res, next) {
-//   console.log("== url params for request:", req.params);
-//   var theMood = req.params.mood;
-//   var moodData = boxData[theMood];
-//   if (moodData) {
-//     var templateArgs = {
-//       box: moodData.boxes,
-//       pageName: moodData.pageName,
-//       style: theMood
-//     }
-//     res.render('moodPage', templateArgs);
-//
-//   } else {
-//     next();
-//   }
-// });
+ app.get('/nav/:page', function (req, res, next) {
+  console.log("== url params for request:", req.params);
+  var thePage = req.params.page;
+
+  if(thePage === "home"){
+    var templateArgs = {
+      active_home: "active"
+    }
+  }
+  else if(thePage === "projects"){
+    var templateArgs = {
+      active_projects: "active",
+      theProjects: projectData["projects"].boxes
+    }
+  }
+  else if(thePage === "resume"){
+    var templateArgs = {
+      active_resume: "active"
+    }
+  }
+
+  if(thePage === "home" || thePage === "projects" || thePage === "resume"){
+    res.render(thePage+'Page', templateArgs);
+  }
+
+  else{
+    next();
+  }
+
+});
 
 
  app.use(express.static(path.join(__dirname, 'public')));
